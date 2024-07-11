@@ -6,7 +6,7 @@ let choices = document.querySelectorAll(".choice");
 
 choices.forEach(function (choice) {
   choice.addEventListener("click", function () {
-    let playerChoice = choice.textContent.toLowerCase();
+    let playerChoice = choice.value;
 
     let opponentChoiceIndex = Math.floor(Math.random() * opponent.length);
     let opponentChoice = opponent[opponentChoiceIndex];

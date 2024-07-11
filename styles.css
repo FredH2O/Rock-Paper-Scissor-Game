@@ -53,6 +53,24 @@ h1 {
   margin-bottom: 20px;
 }
 
+.gif-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+#playerChoice {
+  border: 1px solid red;
+}
+
+#opponentChoice {
+  border: 1px solid red;
+}
+
+#opponentChoice img {
+  transform: scaleX(-1);
+}
+
 .scoreboard {
   font-size: 18px;
 }
