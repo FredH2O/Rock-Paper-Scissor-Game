@@ -59,15 +59,15 @@ h1 {
   gap: 5px;
 }
 
-#playerChoice {
-  border: 1px solid red;
+#playerChoiceDiv {
+  padding: 5px;
 }
 
-#opponentChoice {
-  border: 1px solid red;
+#opponentChoiceDiv {
+  padding: 5px;
 }
 
-#opponentChoice img {
+#opponentChoiceDiv img {
   transform: scaleX(-1);
 }
 
