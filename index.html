@@ -11,6 +11,7 @@
   <body>
     <div class="container">
       <img src="images/rock-paper-scissors.png" alt="Rock Paper Scissors!" />
+      <img id="congratulations" src="" alt="" />
       <h1>Rock Paper Scissors!</h1>
       <div class="game">
         <div class="choices">
@@ -23,14 +24,15 @@
         <div class="results">
           <p id="result">Make your choice!</p>
           <div class="gif-container">
-            <div id="playerChoice">
-              <img src="images/paper.gif" alt="" />
+            <div id="playerChoiceDiv">
+              <img id="playerGif" src="" alt="" />
               <p>Player: <span id="player-score">0</span></p>
             </div>
-            <div id="opponentChoice">
-              <img src="images/rock.gif" alt="" />
+            <div id="opponentChoiceDiv">
+              <img id="opponentGif" src="" alt="" />
               <p>Computer: <span id="computer-score">0</span></p>
             </div>
+            <p>Cooldown: <span id="timer">3</span></p>
           </div>
         </div>
         <div class="scoreboard"></div>
