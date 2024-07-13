@@ -21,6 +21,21 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.update-container {
+  position: relative;
+}
+
+.update-container::before {
+  content: "Congratulions! You Won!";
+  position: absolute;
+  font-size: larger;
+  font-weight: bold;
+  font-size: 1.5rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 h1 {
   margin-bottom: 20px;
 }

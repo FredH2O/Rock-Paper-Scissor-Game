@@ -9,6 +9,7 @@ let playerScoreElement = document.getElementById("player-score");
 let opponentScoreElement = document.getElementById("computer-score");
 let playerScore = 0;
 let opponentScore = 0;
+let imageChange = document.getElementById("congratulations");
 
 choices.forEach(function (choice) {
   choice.addEventListener("click", function () {
@@ -52,9 +53,12 @@ function playGame(playerChoice) {
 
   if (playerScore >= 10) {
     resultElement.textContent = `Congratulations you won!!`;
-    document.getElementById("congratulations").src = "images/Confetti.gif";
+    imageChange.src = "images/Confetti.gif";
     playerScore = 0;
     opponentScore = 0;
+    setTimeout(function () {
+      imageChange.src = "images/rock-paper-scissors.png";
+    }, 3000);
   }
 
   if (opponentScore >= 10) {
