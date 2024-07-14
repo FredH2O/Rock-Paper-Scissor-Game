@@ -147,7 +147,7 @@ function playGame(playerChoice) {
         shapes: ["emoji"],
         shapeOptions: {
           emoji: {
-            value: ["💀"],
+            value: ["💩", "💀"],
           },
         },
       });
