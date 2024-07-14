@@ -14,13 +14,23 @@ let imageChange = document.getElementById("congratulations");
 choices.forEach(function (choice) {
   choice.addEventListener("click", function () {
     let playerChoice = choice.value;
-    console.log(playerChoice); // just checking the value
-    console.log(playerScore);
-    console.log(opponentScore);
+    //console.log(playerChoice);
+    //console.log(playerScore);
+    //console.log(opponentScore);
     playGame(playerChoice);
+    disableButton();
     startCountdown();
   });
 });
+
+function disableButton() {
+  choices.forEach(function (button) {
+    button.disabled = true;
+    setTimeout(function () {
+      button.disabled = false;
+    }, 3000);
+  });
+}
 
 function playGame(playerChoice) {
   let opponentChoiceIndex = Math.floor(Math.random() * opponent.length);
@@ -51,17 +61,60 @@ function playGame(playerChoice) {
   playerScoreElement.textContent = playerScore;
   opponentScoreElement.textContent = opponentScore;
 
-  if (playerScore >= 10) {
+  if (playerScore >= 3) {
     resultElement.textContent = `Congratulations you won!!`;
-    imageChange.src = "images/Confetti.gif";
     playerScore = 0;
     opponentScore = 0;
+
+    // confetti.js library down here
+    const count = 300,
+      defaults = {
+        origin: { y: 0.5 },
+      };
+
+    function fire(particleRatio, opts) {
+      confetti(
+        Object.assign({}, defaults, opts, {
+          particleCount: Math.floor(count * particleRatio),
+        })
+      );
+    }
+
+    fire(0.25, {
+      spread: 26,
+      startVelocity: 55,
+    });
+
+    fire(0.2, {
+      spread: 60,
+    });
+
+    fire(0.35, {
+      spread: 100,
+      decay: 0.91,
+      scalar: 0.8,
+    });
+
+    fire(0.1, {
+      spread: 120,
+      startVelocity: 25,
+      decay: 0.92,
+      scalar: 1.2,
+    });
+
+    fire(0.1, {
+      spread: 120,
+      startVelocity: 45,
+    });
+
+    // confetti.js library up here
+
     setTimeout(function () {
       imageChange.src = "images/rock-paper-scissors.png";
     }, 3000);
   }
 
-  if (opponentScore >= 10) {
+  if (opponentScore >= 3) {
     resultElement.textContent = `Computer WON!`;
     playerScore = 0;
     opponentScore = 0;
@@ -71,7 +124,6 @@ function playGame(playerChoice) {
 function startCountdown() {
   let x = 3;
   timerElement.textContent = x;
-
   if (countdownTimer) {
     clearInterval(countdownTimer);
   }
@@ -84,7 +136,8 @@ function startCountdown() {
       document.getElementById("playerGif").alt = "";
       document.getElementById("opponentGif").src = "";
       document.getElementById("opponentGif").alt = "";
-      resultElement.textContent = "";
+      resultElement.textContent = "Make a choice!";
+      timerElement.textContent = 3;
       clearInterval(countdownTimer);
     }
   }, 1000);
