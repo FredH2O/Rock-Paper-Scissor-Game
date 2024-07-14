@@ -10,6 +10,8 @@ let opponentScoreElement = document.getElementById("computer-score");
 let playerScore = 0;
 let opponentScore = 0;
 let imageChange = document.getElementById("congratulations");
+let x = 3;
+timerElement.textContent = x;
 
 choices.forEach(function (choice) {
   choice.addEventListener("click", function () {
@@ -19,8 +21,15 @@ choices.forEach(function (choice) {
     console.log(opponentScore);
     playGame(playerChoice);
     startCountdown();
+    setTimeout(disableButton, 3000);
   });
 });
+
+function disableButton() {
+  choices.forEach(function (button) {
+    button.disabled = true;
+  });
+}
 
 function playGame(playerChoice) {
   let opponentChoiceIndex = Math.floor(Math.random() * opponent.length);
@@ -69,9 +78,6 @@ function playGame(playerChoice) {
 }
 
 function startCountdown() {
-  let x = 3;
-  timerElement.textContent = x;
-
   if (countdownTimer) {
     clearInterval(countdownTimer);
   }
