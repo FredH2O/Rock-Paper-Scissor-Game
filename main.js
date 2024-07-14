@@ -10,13 +10,14 @@ let opponentScoreElement = document.getElementById("computer-score");
 let playerScore = 0;
 let opponentScore = 0;
 let imageChange = document.getElementById("congratulations");
+let soundEffects = document.getElementById("soundEffects");
 
 choices.forEach(function (choice) {
   choice.addEventListener("click", function () {
     let playerChoice = choice.value;
-    //console.log(playerChoice);
-    //console.log(playerScore);
-    //console.log(opponentScore);
+    soundEffects.src = "sounds/click.mp3";
+    soundEffects.volume = 0.8;
+    soundEffects.play();
     playGame(playerChoice);
     disableButton();
     startCountdown();
@@ -65,6 +66,9 @@ function playGame(playerChoice) {
     resultElement.textContent = `Congratulations you won!!`;
     playerScore = 0;
     opponentScore = 0;
+    soundEffects.src = "sounds/winnerSound.mp3";
+    soundEffects.volume = 1;
+    soundEffects.play();
 
     // confetti.js library down here
     const count = 300,
@@ -108,16 +112,52 @@ function playGame(playerChoice) {
     });
 
     // confetti.js library up here
-
-    setTimeout(function () {
-      imageChange.src = "images/rock-paper-scissors.png";
-    }, 3000);
   }
 
   if (opponentScore >= 3) {
     resultElement.textContent = `Computer WON!`;
+    soundEffects.src = "sounds/loseSound.mp3";
+    soundEffects.volume = 1;
+    soundEffects.play();
     playerScore = 0;
     opponentScore = 0;
+
+    // confetti.js here
+    const defaults = {
+      spread: 760,
+      ticks: 100,
+      gravity: 0,
+      decay: 0.94,
+      startVelocity: 30,
+    };
+
+    function shoot() {
+      confetti({
+        ...defaults,
+        particleCount: 30,
+        scalar: 1.2,
+        shapes: ["circle", "square"],
+        colors: ["#0000", "#0000", "#0000", "#0000", "#0000"],
+      });
+
+      confetti({
+        ...defaults,
+        particleCount: 100,
+        scalar: 2,
+        shapes: ["emoji"],
+        shapeOptions: {
+          emoji: {
+            value: ["💀"],
+          },
+        },
+      });
+    }
+
+    setTimeout(shoot, 0);
+    setTimeout(shoot, 100);
+    setTimeout(shoot, 200);
+
+    // confetti.js here
   }
 }
 
