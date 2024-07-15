@@ -1,6 +1,11 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  font-family: "Noto Serif", serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
 }
 
 body {
@@ -102,7 +107,7 @@ h1 {
   margin: 5px 0;
 }
 
-/* HTML: <div class="loader"></div> */
+/* css-loaders.com here below */
 
 .loader.hidden {
   display: none;

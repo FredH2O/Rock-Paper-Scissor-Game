@@ -30,6 +30,15 @@ Welcome to the **Rock Paper Scissors Game** repository! This project is a web-ba
 - **Randomized Moves**: Computer opponent makes random, unpredictable moves.
 - **Responsive Design**: Optimized for both desktop and mobile devices.
 
+## Tech Used
+
+- HTML
+- CSS
+- JavaScript
+- Loading CSS - https://css-loaders.com/progress/
+- Confetti.js - https://confetti.js.org/
+- Sounds - https://pixabay.com/
+
 ## Getting Started
 
 Follow these instructions to get a copy of the project up and running on your local machine.
