@@ -161,7 +161,7 @@ function playGame(playerChoice) {
 
         confetti({
           ...defaults,
-          particleCount: 100,
+          particleCount: 25,
           scalar: 2,
           shapes: ["emoji"],
           shapeOptions: {
