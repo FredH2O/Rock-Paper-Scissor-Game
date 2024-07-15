@@ -11,16 +11,33 @@ let playerScore = 0;
 let opponentScore = 0;
 let imageChange = document.getElementById("congratulations");
 let soundEffects = document.getElementById("soundEffects");
+let loaderDiv = document.querySelectorAll(".loader");
 
 choices.forEach(function (choice) {
   choice.addEventListener("click", function () {
-    let playerChoice = choice.value;
+    // play loading first
+    //document.getElementById("playerGif").src = `images/loading.gif`;
+    //document.getElementById("opponentGif").src = `images/loading.gif`;
+    loaderDiv.forEach(function (loader) {
+      loader.classList.remove("hidden");
+      setTimeout(function () {
+        loader.classList.add("hidden");
+      }, 1500);
+    });
+    resultElement.innerText = "";
+    disableButton(); // we disable the button
+
+    // sound effects when buttons pressed
     soundEffects.src = "sounds/click.mp3";
     soundEffects.volume = 0.8;
     soundEffects.play();
-    playGame(playerChoice);
-    disableButton();
-    startCountdown();
+
+    let playerChoice = choice.value;
+
+    setTimeout(function () {
+      playGame(playerChoice);
+      startCountdown();
+    }, 1500);
   });
 });
 
@@ -66,6 +83,8 @@ function playGame(playerChoice) {
     resultElement.textContent = `Congratulations you won!!`;
     playerScore = 0;
     opponentScore = 0;
+    playerScoreElement.textContent = 0;
+    opponentScoreElement.textContent = 0;
     soundEffects.src = "sounds/winnerSound.mp3";
     soundEffects.volume = 1;
     soundEffects.play();
@@ -115,13 +134,14 @@ function playGame(playerChoice) {
   }
 
   if (opponentScore >= 3) {
-    resultElement.textContent = `Computer WON!`;
+    resultElement.textContent = `You LOSE!`;
     soundEffects.src = "sounds/loseSound.mp3";
     soundEffects.volume = 1;
     soundEffects.play();
     playerScore = 0;
     opponentScore = 0;
-
+    playerScoreElement.textContent = 0;
+    opponentScoreElement.textContent = 0;
     // confetti.js here
     const defaults = {
       spread: 760,
@@ -164,9 +184,11 @@ function playGame(playerChoice) {
 function startCountdown() {
   let x = 3;
   timerElement.textContent = x;
+
   if (countdownTimer) {
     clearInterval(countdownTimer);
   }
+
   countdownTimer = setInterval(function () {
     x--;
     timerElement.textContent = x;
