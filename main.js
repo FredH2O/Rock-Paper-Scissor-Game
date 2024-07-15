@@ -46,7 +46,7 @@ function disableButton() {
     button.disabled = true;
     setTimeout(function () {
       button.disabled = false;
-    }, 3000);
+    }, 6600);
   });
 }
 
@@ -62,19 +62,21 @@ function playGame(playerChoice) {
   document.getElementById("opponentGif").alt =
     opponentChoice.charAt(0).toUpperCase() + opponentChoice.slice(1);
 
-  if (playerChoice === opponentChoice) {
-    resultElement.textContent = "It's a Draw! 😐";
-  } else if (
-    (playerChoice === "rock" && opponentChoice === "scissors") ||
-    (playerChoice === "paper" && opponentChoice === "rock") ||
-    (playerChoice === "scissors" && opponentChoice === "paper")
-  ) {
-    resultElement.textContent = "You Win! 😄";
-    playerScore++;
-  } else {
-    resultElement.textContent = "You Lose! 💀";
-    opponentScore++;
-  }
+  setTimeout(function () {
+    if (playerChoice === opponentChoice) {
+      resultElement.textContent = "It's a Draw! 😐";
+    } else if (
+      (playerChoice === "rock" && opponentChoice === "scissors") ||
+      (playerChoice === "paper" && opponentChoice === "rock") ||
+      (playerChoice === "scissors" && opponentChoice === "paper")
+    ) {
+      resultElement.textContent = "You Win! 😄";
+      playerScore++;
+    } else {
+      resultElement.textContent = "You Lose! 💀";
+      opponentScore++;
+    }
+  }, 2000);
 
   playerScoreElement.textContent = playerScore;
   opponentScoreElement.textContent = opponentScore;
@@ -182,7 +184,7 @@ function playGame(playerChoice) {
 }
 
 function startCountdown() {
-  let x = 3;
+  let x = 5;
   timerElement.textContent = x;
 
   if (countdownTimer) {
@@ -199,7 +201,7 @@ function startCountdown() {
       document.getElementById("opponentGif").src = "";
       document.getElementById("opponentGif").alt = "";
       resultElement.textContent = "Make a choice!";
-      timerElement.textContent = 3;
+      timerElement.textContent = x;
       clearInterval(countdownTimer);
     }
   }, 1000);
