@@ -104,11 +104,9 @@ h1 {
 
 /* HTML: <div class="loader"></div> */
 
-/*
 .loader.hidden {
   display: none;
 }
-*/
 
 .loader {
   width: 100px;
