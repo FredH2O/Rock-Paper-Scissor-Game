@@ -13,9 +13,25 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+    />
   </head>
   <body>
     <div class="container">
+      <div id="backgroundMusicDiv">
+        <button id="back"><i class="bi bi-skip-backward-fill"></i></button>
+        <button id="play"><i class="bi bi-play-fill"></i></button>
+        <button id="pause"><i class="bi bi-pause"></i></button>
+        <button id="next"><i class="bi bi-skip-forward-fill"></i></button>
+        <audio
+          id="backgroundMusic"
+          src="sounds/music1.mp3"
+          preload="auto"
+          autoplay
+        ></audio>
+      </div>
       <div class="update-container">
         <img
           id="congratulations"
@@ -46,9 +62,9 @@
               <div class="loader hidden"></div>
               <p>Computer: <span id="computer-score">0</span>/3</p>
             </div>
-            <div>
-              <p>Cooldown: <span id="timer"></span></p>
-            </div>
+          </div>
+          <div id="cooldown-div">
+            <p>Countdown: <span id="timer"></span></p>
           </div>
         </div>
       </div>

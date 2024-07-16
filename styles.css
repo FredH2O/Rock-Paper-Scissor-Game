@@ -101,6 +101,13 @@ h1 {
   transform: scaleX(-1);
 }
 
+#cooldown-div {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
 /* css-loaders.com here below */
 
 .loader.hidden {

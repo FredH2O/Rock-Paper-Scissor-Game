@@ -13,6 +13,51 @@ let imageChange = document.getElementById("congratulations");
 let soundEffects = document.getElementById("soundEffects");
 let loaderDiv = document.querySelectorAll(".loader");
 
+let backgroundMusic = document.getElementById("backgroundMusic");
+let playBtn = document.getElementById("play");
+let pauseBtn = document.getElementById("pause");
+let nextBtn = document.getElementById("next");
+let backBtn = document.getElementById("back");
+let backgroundMusicDiv = document.getElementById("backgroundMusicDiv");
+backgroundMusic.volume = 0.3;
+
+const musicChoices = [
+  "sounds/music2.mp3",
+  "sounds/music3.mp3",
+  "sounds/music1.mp3",
+];
+
+let musicIndex = 0;
+
+function updateTrack() {
+  backgroundMusic.src = musicChoices[musicIndex];
+  backgroundMusic.play();
+}
+
+nextBtn.addEventListener("click", function () {
+  musicIndex++;
+  if (musicIndex >= musicChoices.length) {
+    musicIndex = 0;
+  }
+  updateTrack();
+});
+
+playBtn.addEventListener("click", function () {
+  backgroundMusic.play();
+});
+
+pauseBtn.addEventListener("click", function () {
+  backgroundMusic.pause();
+});
+
+backBtn.addEventListener("click", function () {
+  musicIndex--;
+  if (musicIndex < 0) {
+    musicIndex = musicChoices.length - 1;
+  }
+  updateTrack();
+});
+
 choices.forEach(function (choice) {
   choice.addEventListener("click", function () {
     // play loading first
