@@ -19,11 +19,33 @@ body {
 }
 
 .container {
+  position: relative;
   text-align: center;
   background: #ffffff;
   padding: 3%;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#backgroundMusicDiv {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  margin: 0;
+  padding: 0;
+}
+
+#backgroundMusicDiv > button {
+  border-radius: 50px;
+  border: 1px solid gray;
+  font-size: 10px;
+}
+
+#backgroundMusicDiv > button:hover {
+  background-color: #484545;
+  transform: translateY(-10%);
+  transition: 0.5s;
+  cursor: pointer;
 }
 
 .update-container {

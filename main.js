@@ -19,7 +19,7 @@ let pauseBtn = document.getElementById("pause");
 let nextBtn = document.getElementById("next");
 let backBtn = document.getElementById("back");
 let backgroundMusicDiv = document.getElementById("backgroundMusicDiv");
-backgroundMusic.volume = 0.3;
+backgroundMusic.volume = 0.1;
 
 const musicChoices = [
   "sounds/music2.mp3",
@@ -42,20 +42,20 @@ nextBtn.addEventListener("click", function () {
   updateTrack();
 });
 
-playBtn.addEventListener("click", function () {
-  backgroundMusic.play();
-});
-
-pauseBtn.addEventListener("click", function () {
-  backgroundMusic.pause();
-});
-
 backBtn.addEventListener("click", function () {
   musicIndex--;
   if (musicIndex < 0) {
     musicIndex = musicChoices.length - 1;
   }
   updateTrack();
+});
+
+playBtn.addEventListener("click", function () {
+  backgroundMusic.play();
+});
+
+pauseBtn.addEventListener("click", function () {
+  backgroundMusic.pause();
 });
 
 choices.forEach(function (choice) {
@@ -85,7 +85,7 @@ choices.forEach(function (choice) {
     }, 1500);
   });
 });
-
+// disable button for awhile
 function disableButton() {
   choices.forEach(function (button) {
     button.disabled = true;
@@ -109,23 +109,23 @@ function playGame(playerChoice) {
 
   setTimeout(function () {
     if (playerChoice === opponentChoice) {
-      resultElement.textContent = "It's a Draw! 😐";
+      resultElement.textContent = "It's a Draw! 🤝🏻";
     } else if (
       (playerChoice === "rock" && opponentChoice === "scissors") ||
       (playerChoice === "paper" && opponentChoice === "rock") ||
       (playerChoice === "scissors" && opponentChoice === "paper")
     ) {
-      resultElement.textContent = "You Win! 😄";
+      resultElement.textContent = "You Win! 👍🏼";
       playerScore++;
     } else {
-      resultElement.textContent = "You Lose! 💀";
+      resultElement.textContent = "You Lose! 👎🏽";
       opponentScore++;
     }
     playerScoreElement.textContent = playerScore;
     opponentScoreElement.textContent = opponentScore;
 
     if (playerScore >= 3) {
-      resultElement.textContent = `Congratulations you won!!`;
+      resultElement.textContent = `You WIN! 👏🏽`;
       playerScore = 0;
       opponentScore = 0;
       playerScoreElement.textContent = 0;
@@ -178,7 +178,7 @@ function playGame(playerChoice) {
       // confetti.js library up here
     }
     if (opponentScore >= 3) {
-      resultElement.textContent = `You LOSE!`;
+      resultElement.textContent = `You LOSE... 😢 `;
       soundEffects.src = "sounds/loseSound.mp3";
       soundEffects.volume = 1;
       soundEffects.play();
