@@ -107,10 +107,16 @@ h1 {
   gap: 5px;
 }
 
+#playerGif,
+#opponentGif {
+  margin: 0;
+  padding: 0;
+}
+
 #playerChoiceDiv,
 #opponentChoiceDiv {
   width: 200px;
-  height: 100px;
+  height: 130px;
   padding: 0;
   display: flex;
   flex-direction: column;
