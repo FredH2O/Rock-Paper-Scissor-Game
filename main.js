@@ -239,9 +239,9 @@ function startCountdown() {
     timerElement.textContent = x;
 
     if (x <= 0) {
-      document.getElementById("playerGif").src = "";
+      document.getElementById("playerGif").src = "images/rock.gif";
       document.getElementById("playerGif").alt = "";
-      document.getElementById("opponentGif").src = "";
+      document.getElementById("opponentGif").src = "images/rock.gif";
       document.getElementById("opponentGif").alt = "";
       resultElement.textContent = "Make a choice!";
       timerElement.textContent = x;
