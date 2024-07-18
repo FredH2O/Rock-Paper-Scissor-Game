@@ -10,12 +10,13 @@
 
 body {
   font-family: Arial, sans-serif;
+  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   background-color: #484545;
-  margin: 0;
+  margin: auto;
 }
 
 .container {
@@ -161,6 +162,14 @@ h1 {
   background: currentColor;
   animation: l6 2s infinite;
 }
+
+footer {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  color: rgb(125, 123, 123);
+}
+
 @keyframes l6 {
   100% {
     inset: 0;
